@@ -1,0 +1,10 @@
+{
+    "author": "Duncan Cameron",
+    "email": "",
+    "website": "https://github.com/bramley/bludit-plugin-phplist",
+    "version": "1.0",
+    "releaseDate": "2024-04-06",
+    "license": "MIT",
+    "compatible": "3.15.0",
+    "notes": ""
+}
