@@ -17,11 +17,14 @@ class pluginPhplist extends Plugin
         global $L;
 
         $html = '';
-        $html .= '<style type="text/css">
-            .plugin-form .phplist-form label {margin-top: 0 !important; }
-            .phplist-form .short-input { max-width: 200px };
-            </style>';
-        $html .= '<div class="tab-content phplist-form">';
+        $html .= <<<'END'
+<style type="text/css">
+    .plugin-form .phplist-form label {margin-top: 0 !important; }
+    .phplist-form .short-input { max-width: 200px };
+</style>
+END;
+        $html .= sprintf('<div class="alert alert-primary" role="alert">%s</div>', $this->description());
+        $html .= '<div class="phplist-form">';
 
         $html .= Bootstrap::formInputText([
               'name' => 'label',
@@ -54,22 +57,14 @@ class pluginPhplist extends Plugin
         return $html;
     }
 
-    public function siteHead()
+    public function siteBodyEnd()
     {
-        $jquery = sprintf('%s/js/%s', $this->getValue('phplist_url'), 'jquery-3.6.0.min.js');
-        $subscribe = sprintf('%s/js/%s', $this->getValue('phplist_url'), 'phplist-subscribe-0.3.min.js');
-        $format = <<<'END'
-<script type="text/javascript" src="%s"></script>
-<script type="text/javascript" src="%s"></script>
-END;
-        $head = sprintf($format, $jquery, $subscribe);
-
-        return $head;
+        return $this->includeJS('phplist-subscribe.js');
     }
 
     public function siteSidebar()
     {
-        $url = sprintf('%s/?p=subscribe&amp;id=%d', $this->getValue('phplist_url'), $this->getValue('subscribe_page'));
+        $url = sprintf('%s/?p=asubscribe&amp;id=%d', $this->getValue('phplist_url'), $this->getValue('subscribe_page'));
         $format = <<<'END'
 <div class="plugin plugin-phplist">
     <h2 class="plugin-label">%s</h2>
