@@ -64,7 +64,7 @@ END;
 
     public function siteSidebar()
     {
-        $url = sprintf('%s/?p=asubscribe&amp;id=%d', $this->getValue('phplist_url'), $this->getValue('subscribe_page'));
+        $url = sprintf('%s/?p=subscribe&amp;id=%d', $this->getValue('phplist_url'), $this->getValue('subscribe_page'));
         $format = <<<'END'
 <div class="plugin plugin-phplist">
     <h2 class="plugin-label">%s</h2>
@@ -72,7 +72,7 @@ END;
         <div>%s</div>
     <div id="phplistsubscriberesult"></div>
     <form action="%s" method="post" id="phplistsubscribeform">
-        <input type="text" name="email" value="" id="emailaddress"/>
+        <input type="email" required placeholder="Your email address" name="email" value="" id="emailaddress"/>
         <input type="submit" id="phplistsubscribe" class="submit" value="Subscribe"/>
     </form>
     </div>

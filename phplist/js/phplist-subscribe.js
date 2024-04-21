@@ -38,19 +38,6 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
-    $("#emailaddress").val(pleaseEnter);
-    $("#emailaddress").focus(function () {
-        var v = $("#emailaddress").val();
-        if (v == pleaseEnter) {
-            $("#emailaddress").val("")
-        }
-    });
-    $("#emailaddress").blur(function () {
-        var v = $("#emailaddress").val();
-        if (v == "") {
-            $("#emailaddress").val(pleaseEnter)
-        }
-    });
     var cookie = document.cookie;
     if (cookie.indexOf('phplistsubscribed=yes') >= 0) {
         $("#phplistsubscribeform").html(thanksForSubscribing);
@@ -65,9 +52,6 @@ jQuery(document).ready(function ($) {
 
 });
 
-if (pleaseEnter == undefined) {
-    var pleaseEnter = "Please enter your email";
-}
 if (thanksForSubscribing == undefined) {
     var thanksForSubscribing = '<div class="subscribed">Thanks for subscribing. Please click the link in the confirmation email you will receive.</div>';
 }
